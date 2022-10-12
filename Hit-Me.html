@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hit-Me</title>
+    <link rel="icon" href="img/icon.png">
+    <style>
+        * {
+            color: white;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        .container2 {
+            margin-top: 30px;
+        }
+
+        .container1 {
+            margin-top: 30px;
+        }
+        #shape{
+            display: none;
+            position: relative;
+        }
+        #foot{
+            margin-top: 80vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container1">
+        <center><u><b>Welcome to Hit-Me!</b></u></center>
+    </div>
+    <div class="container2">
+        <span>Your time is : </span><span id="time">  </span>
+    </div>
+    <div id="shape"></div>
+</body>
+<footer id="foot">
+    <center>
+    <p>copyright &copy 2022,Sourabh Bharti.</p>
+    <a href="https://www.instagram.com/mav___rik_21/">Instagram</a>
+    </center>
+</footer>
+<script>
+    var start = new Date().getTime();
+    function getRandomColor() {
+        var letter = "0123456789ABCDEF".split('');
+        var color = "#";
+        for (var i = 0; i < 6; i++) {
+            color += letter[Math.floor(Math.random() * 10)];
+        }
+        return color;
+    }
+    function makeShapeAppear() {
+        var top = Math.random() * 400;
+        var left = Math.random() * 400;
+        if (Math.random() > 0.5) {
+            document.getElementById('shape').style.borderRadius = "50%";
+        }
+        else {
+            document.getElementById('shape').style.borderRadius = "0";
+        }
+
+        document.getElementById('shape').style.backgroundColor = getRandomColor();
+        document.getElementById('shape').style.width = "120px";
+        document.getElementById('shape').style.height = "120px";
+        document.getElementById('shape').style.top = top + "px";
+        document.getElementById('shape').style.left = left + "px";
+
+        document.getElementById('shape').style.display = "block";
+        start = new Date().getTime();
+    }
+    function appearAfterDelay() {
+        setTimeout(makeShapeAppear,2000);
+    }
+
+    appearAfterDelay();
+
+    // document.getElementById('shape').onclick = function () {
+    //     document.getElementById('shape').style.display = "none";
+    //     var end=new Date().getTime();
+    //     var timetaken=(end-start)/1000;
+    //     document.getElementById('time').innerHTML=timetaken + "s";
+    //     appearAfterDelay();
+    // }
+
+    let s = document.getElementById('shape');
+    s.addEventListener('click',()=>{
+        console.log("clicked");
+        document.getElementById('shape').style.display = "none";
+        var end=new Date().getTime();
+        var timetaken=(end-start)/1000;
+        document.getElementById('time').innerHTML=timetaken + "s";
+        appearAfterDelay();
+    })
+    
+</script>
+
+</html>
